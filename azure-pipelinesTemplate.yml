@@ -1,0 +1,43 @@
+# Python package
+# Create and test a Python package on multiple Python versions.
+# Add steps that analyze code, save the dist with the build record, publish to a PyPI-compatible index, and more:
+# https://docs.microsoft.com/azure/devops/pipelines/languages/python
+
+trigger:
+- <<branch_name>>
+
+variables:
+- group: <<variable_group_name>>
+
+pool:
+  name: <<agent_pool_name>>
+
+steps:
+
+- script: |
+    pip3 install -r requirements.txt
+  displayName: 'Install dependencies'
+
+- script: |
+    pip3 install pytest pytest-azurepipelines
+  displayName: 'pytest'
+
+- bash: |
+    mkdir -p /azp/agent/_work/1/s/junit/artifacts
+
+- script: |
+    python3 -m pytest --doctest-modules --junitxml=junit/test-results.xml
+  env:
+    PWD: <<reference_to_secret_password>>
+  displayName: 'Test with pytest'
+
+- bash: |
+    ls -R /azp/agent/_work/1/s/junit/artifacts
+
+- task: PublishBuildArtifacts@1
+  inputs:
+    pathtoPublish: /azp/agent/_work/1/s/junit/artifacts
+    artifactName: TestArtifacts
+
+- bash: |
+    rm -rf /azp/agent/_work/1/s/junit/artifacts

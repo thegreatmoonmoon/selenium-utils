@@ -1,0 +1,48 @@
+{
+    "WEBDRIVER": {
+        "seleniumhub": "http://<<seleniumhubIP>>:4444/wd/hub",
+        "desiredcapabilities": {
+            "browserName": "chrome"
+        }
+    }, 
+    "TESTCASES": { 
+        "TestLoginSecurity": {
+            "test_step_111": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.1.1.png",
+                "url": "https://<<targetwebsite>>"
+            }]
+        },
+        "TestLoginSecurityInvalid": {
+            "test_step_121": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.2.1.png",
+                "url": "https://<<targetwebsite>>"
+            }],
+            "test_step_122": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.2.2.png",
+                "url": "https://<<targetwebsite>>"
+            }]            
+        },
+        "TestPasswordSecurity": {
+            "test_step_131": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.3.1.png",
+                "url": "https://<<targetwebsite>>"
+            }]
+        },
+        "TestTimeOutSecurity": {
+            "test_step_141": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.4.1.png",
+                "url": "https://<<targetwebsite>>"
+            }],
+            "test_step_142": [{
+                "username": "<<username>>",
+                "screenshotpath": "/azp/agent/_work/1/s/junit/artifacts/test_step_1.4.2.png",
+                "url": "https://<<targetwebsite>>"
+            }]
+        }
+    }
+}
